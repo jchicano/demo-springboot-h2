@@ -35,6 +35,10 @@ HTTP/1.1 200
 <ID of inserted row>
 ```
 
+Use file `demo-springboot-h2.postman_collection.json` with Postman to see al currently working endpoints.
+
+JUnit not done.
+
 <br><br>
 
 ## Additional information
