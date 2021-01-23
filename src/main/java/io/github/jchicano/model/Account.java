@@ -4,17 +4,28 @@ import java.util.Currency;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Account {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
     private String name;
     private Currency currency;
     private int balance;
     private boolean treasury;
+    
+	public Account(int id, String name, Currency currency, int balance, boolean treasury) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.currency = currency;
+		this.balance = balance;
+		this.treasury = treasury;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -41,9 +52,6 @@ public class Account {
 	}
 	public boolean isTreasury() {
 		return treasury;
-	}
-	public void setTreasury(boolean treasury) {
-		this.treasury = treasury;
 	}
     
     
