@@ -22,8 +22,8 @@ public class AccountController {
 	AccountService service;
 
 	// Save account entity in the h2 database.
-	@PostMapping(value= "/account/save")
-	public int save(final @RequestBody Account acc) {
+	@PostMapping(value= "/account/create")
+	public int save(final @RequestBody Account acc) throws Exception {
 		log.info("Saving account details in the database.");
 		service.save(acc);
 		return acc.getId();
@@ -31,7 +31,7 @@ public class AccountController {
 
 	// Get all accounts from the h2 database.
 	@GetMapping(value= "/account/getall", produces= "application/vnd.jcg.api.v1+json")
-	public List<Account> getAll() {
+	public Iterable<Account> getAll() throws Exception {
 		log.info("Getting account details from the database.");
 		return service.getAll();
 	}
