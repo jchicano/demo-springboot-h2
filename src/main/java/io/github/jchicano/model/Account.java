@@ -13,11 +13,11 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
     private String name;
-    private Currency currency;
+    private String currency;
     private int balance;
     private boolean treasury;
     
-	public Account(int id, String name, Currency currency, int balance, boolean treasury) {
+	public Account(int id, String name, String currency, int balance, boolean treasury) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,6 +26,10 @@ public class Account {
 		this.treasury = treasury;
 	}
 	
+	public Account() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -38,10 +42,10 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Currency getCurrency() {
+	public String getCurrency() {
 		return currency;
 	}
-	public void setCurrency(Currency currency) {
+	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 	public int getBalance() {
