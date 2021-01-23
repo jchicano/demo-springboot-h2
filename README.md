@@ -37,7 +37,9 @@ HTTP/1.1 200
 
 Use file `demo-springboot-h2.postman_collection.json` with Postman to see al currently working endpoints.
 
-JUnit not done.
+<b>JUnit not done</b>
+
+<b>JAR not exported</b>
 
 <br><br>
 
