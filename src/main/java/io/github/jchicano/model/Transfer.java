@@ -24,4 +24,29 @@ public class Transfer {
     private Account target;
 
     private int amount;
+
+	public Transfer(Account source, Account target, int amount) {
+		super();
+		this.source = source;
+		this.target = target;
+		this.amount = amount;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public Account getSource() {
+		return source;
+	}
+
+	public Account getTarget() {
+		return target;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+	
+    
 }

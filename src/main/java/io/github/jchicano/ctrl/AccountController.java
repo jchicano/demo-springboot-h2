@@ -1,11 +1,13 @@
 package io.github.jchicano.ctrl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +36,16 @@ public class AccountController {
 	public Iterable<Account> getAll() throws Exception {
 		log.info("Getting account details from the database.");
 		return service.getAll();
+	}
+	
+	// Find account from the h2 database.
+	@GetMapping(value= "/account/{number}", produces= "application/vnd.jcg.api.v1+json")
+	public Optional<Account> getOne(final @PathVariable("number") int id) {
+		log.info("Getting account details from the database.");
+		Optional<Account> a = service.findAccount(id);
+		log.error("valor: " + a);
+		
+		return service.findAccount(id);
 	}
 
 }

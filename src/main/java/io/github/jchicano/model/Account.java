@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.lang.NonNull;
+
+
 @Entity
 public class Account {
 	@Id
@@ -29,6 +32,33 @@ public class Account {
 	public Account() {
 		super();
 	}
+	
+	public void giveBalance(final @NonNull int amount) throws Exception {
+        if (this.treasury == false) {
+            if (amount < 0) {
+                throw new IllegalArgumentException("Amount must be > 0");
+            }
+        }
+
+        final int newBalance = balance -= amount;
+
+        if (this.treasury == false) {
+            if (newBalance < 0) {
+                throw new Exception("Balance will be negative, transaccion stopped.");
+            }
+        }
+
+        this.balance = newBalance;
+    }
+
+    public void receiveBalance(final @NonNull int amount) {
+        if (this.treasury == false) {
+            if (amount < 0) {
+                throw new IllegalArgumentException("Amount must be > 0");
+            }
+        }
+        this.balance = this.balance += amount;
+    }
 
 	public int getId() {
 		return id;
@@ -56,6 +86,12 @@ public class Account {
 	}
 	public boolean isTreasury() {
 		return treasury;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", name=" + name + ", currency=" + currency + ", balance=" + balance
+				+ ", treasury=" + treasury + "]";
 	}
     
     

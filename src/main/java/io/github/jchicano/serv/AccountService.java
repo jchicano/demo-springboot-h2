@@ -2,6 +2,7 @@ package io.github.jchicano.serv;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,11 @@ public class AccountService {
 	// Save account entity in the h2 database.
 	public void save(final Account acc) {
 		repository.save(acc);
+	}
+	
+	public Optional<Account> findAccount(int sourceAccountId) {
+		final Optional<Account> account = repository.findById(sourceAccountId);
+		return account;
 	}
 
 	// Get all accounts from the h2 database.
